@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Message Sent | Affordable Property Servicez LLC</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="gallery.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header id="header">
+    <div class="header-logo-bar">
+      <a href="index.html">
+        <img src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/160x160/filters:strip_exif()/filters:no_upscale()/filters:format(webp)/media/4c763a19-47e3-47de-a568-20d8f2c11971.png" alt="Affordable Property Servicez LLC Logo" class="logo-img" />
+      </a>
+    </div>
+    <div class="nav-container">
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Home</a></li>
+          <li class="dropdown">
+            <a href="index.html#services">Services <i class="fas fa-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="landscape-design.html">Landscape Design & Installation</a></li>
+              <li><a href="kitchen-bathroom.html">Kitchen & Bathroom Remodeling</a></li>
+              <li><a href="interior-remodeling.html">Interior Remodeling Services</a></li>
+              <li><a href="outdoor-living.html">Outdoor Living & Hardscaping</a></li>
+              <li><a href="irrigation-drainage.html">Irrigation & Drainage Systems</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="gallery-all.html">Galleries <i class="fas fa-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="gallery-landscaping.html">Landscaping Gallery</a></li>
+              <li><a href="gallery-all.html">All Photos</a></li>
+            </ul>
+          </li>
+          <li><a href="reviews.html">Reviews</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-cta">
+        <a href="tel:+1234567890" class="btn-call"><i class="fas fa-phone"></i> Call / Text</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- SUCCESS -->
+  <section class="success-section">
+    <div class="success-inner">
+      <div class="success-icon">
+        <i class="fas fa-check"></i>
+      </div>
+      <h1>Message Sent!</h1>
+      <p>Thank you for reaching out to Affordable Property Servicez LLC. Robert will personally review your request and get back to you within 24 hours.</p>
+      <a href="index.html" class="btn-primary">Back to Home</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="https://d3p2r6ofnvoe67.cloudfront.net/fit-in/160x160/filters:strip_exif()/filters:no_upscale()/filters:format(webp)/media/4c763a19-47e3-47de-a568-20d8f2c11971.png" alt="Logo" class="footer-logo-img" />
+          <h3>Affordable Property Servicez LLC</h3>
+          <p>Professional landscaping and property services in Orlando, FL.</p>
+          <a href="https://www.facebook.com/profile.php?id=61561155415346" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="gallery-all.html">Gallery</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-services">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="landscape-design.html">Landscape Design</a></li>
+            <li><a href="kitchen-bathroom.html">Kitchen & Bath Remodeling</a></li>
+            <li><a href="interior-remodeling.html">Interior Remodeling</a></li>
+            <li><a href="outdoor-living.html">Outdoor Living</a></li>
+            <li><a href="irrigation-drainage.html">Irrigation Systems</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p><i class="fas fa-envelope"></i> a1propertyservicez@gmail.com</p>
+          <p><i class="fas fa-map-marker-alt"></i> Orlando, FL</p>
+          <p><i class="fas fa-clock"></i> Mon–Fri: 9:00am – 5:00pm</p>
+          <p><i class="fas fa-clock" style="opacity:0"></i> Sat–Sun: Closed</p>
+          <a href="contact.html" class="btn-primary">Free Quote</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Affordable Property Servicez LLC. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="splash.js"></script>
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    if (hamburger) hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); navLinks.classList.toggle('open'); });
+  </script>
+</body>
+</html>
