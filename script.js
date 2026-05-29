@@ -117,18 +117,37 @@ document.querySelectorAll('.faq-question').forEach(btn => {
 // ===== CONTACT FORM =====
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-  contactForm.addEventListener('submit', (e) => {
+  contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = contactForm.querySelector('button[type="submit"]');
-    btn.textContent = 'Message Sent!';
-    btn.style.background = '#388e3c';
+    btn.textContent = 'Sending...';
     btn.disabled = true;
-    setTimeout(() => {
-      btn.textContent = 'Send Message';
-      btn.style.background = '';
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: new FormData(contactForm)
+      });
+      const json = await res.json();
+      if (json.success) {
+        btn.textContent = 'Message Sent!';
+        btn.style.background = '#388e3c';
+        contactForm.reset();
+        setTimeout(() => {
+          btn.textContent = 'Send Message';
+          btn.style.background = '';
+          btn.disabled = false;
+        }, 4000);
+      } else {
+        btn.textContent = 'Failed. Try Again.';
+        btn.style.background = '#c62828';
+        btn.disabled = false;
+      }
+    } catch {
+      btn.textContent = 'Failed. Try Again.';
+      btn.style.background = '#c62828';
       btn.disabled = false;
-      contactForm.reset();
-    }, 3000);
+    }
   });
 }
 
