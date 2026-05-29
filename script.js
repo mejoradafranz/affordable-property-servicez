@@ -1,3 +1,14 @@
+// Always start at top of page — prevents mobile browsers from restoring scroll position
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+window.scrollTo(0, 0);
+
+// After any in-page anchor scroll, remove the hash from the URL so bookmarks/shares stay clean
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function() {
+    setTimeout(() => history.replaceState(null, '', window.location.pathname), 700);
+  });
+});
+
 // ===== HAMBURGER MENU =====
 const hamburger = document.getElementById('hamburger');
 const nav = document.querySelector('nav');
