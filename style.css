@@ -541,6 +541,8 @@ nav { flex: 1; display: flex; justify-content: center; }
   gap: 24px;
   width: max-content;
   animation: reviewScroll 40s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .review-marquee-wrap:hover .review-marquee-track {
@@ -831,4 +833,8 @@ nav { flex: 1; display: flex; justify-content: center; }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
   .hero-content h1 { font-size: 28px; }
   .nav-cta { display: none; }
+  .section-title { font-size: 22px; }
+  .review-card { width: 260px; }
+  .review-marquee-track { gap: 12px; }
+  .dropdown-menu { min-width: 0; width: calc(100vw - 40px); }
 }
