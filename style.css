@@ -787,6 +787,8 @@ nav { flex: 1; display: flex; justify-content: center; }
   text-align: center;
 }
 .footer-bottom p { font-size: 13px; color: #777; }
+.footer-credit { margin-top: 6px; font-size: 12px; color: #555; letter-spacing: 0.5px; }
+.footer-credit strong { color: #a5d6a7; letter-spacing: 1.5px; font-family: 'Montserrat', sans-serif; }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
