@@ -277,45 +277,54 @@ nav { display: none; }
 .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .hamburger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
 
-/* ===== SLIDE-IN NAV PANEL ===== */
-@keyframes navSlideIn {
-  from { transform: translateX(100%); }
-  to   { transform: translateX(0); }
+/* ===== FULL-SCREEN NAV OVERLAY ===== */
+@keyframes navFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 nav.open {
   display: flex;
   flex-direction: column;
   position: fixed;
-  top: 0;
-  right: 0;
-  height: 100%;
-  width: min(300px, 82vw);
-  background: #fff;
+  inset: 0;
+  background: rgba(6, 14, 6, 0.97);
   z-index: 99998;
-  box-shadow: -6px 0 32px rgba(0,0,0,0.18);
-  padding: 80px 0 40px;
-  overflow-y: auto;
-  animation: navSlideIn 0.32s ease;
+  overflow: hidden;
+  animation: navFadeIn 0.28s ease;
 }
 
-.nav-links { flex-direction: column; gap: 0; padding: 0 28px; }
-.nav-links > li > a {
-  padding: 15px 0;
-  border-bottom: 1px solid #f0f0f0;
-  font-size: 15px;
-  font-weight: 700;
+/* ── Links row across the top ── */
+.nav-links {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0;
+  padding: 0 56px 0 12px;
+  min-height: 58px;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  flex-shrink: 0;
 }
-.nav-links > li:last-child > a { border-bottom: none; }
+.nav-links > li > a {
+  color: rgba(255,255,255,0.82);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 10px 14px;
+  border-bottom: none;
+  white-space: nowrap;
+  transition: color 0.2s;
+  display: block;
+  width: auto;
+}
+.nav-links > li > a:hover { color: #a5d6a7; }
+.nav-links > li > a i { display: none; }
 
+/* Dropdown sub-links inside full-screen nav */
 .dropdown-menu {
   position: static;
   box-shadow: none;
-  padding: 4px 0 4px 16px;
+  padding: 2px 0 2px 8px;
   display: none;
   min-width: 0;
   background: none;
@@ -324,14 +333,69 @@ nav.open {
 .dropdown.open .dropdown-menu { display: block; }
 .dropdown:hover .dropdown-menu { display: none; }
 .dropdown-menu li a {
-  padding: 9px 0;
-  font-size: 13.5px;
-  color: #555;
+  padding: 6px 0;
+  font-size: 12px;
+  color: rgba(255,255,255,0.55);
   border-bottom: none;
+  white-space: normal;
 }
-.dropdown-menu li a:hover { background: none; color: #2e7d32; }
+.dropdown-menu li a:hover { background: none; color: #a5d6a7; }
 
-/* Dark overlay behind open nav */
+/* ── Our Best Work scrolling section ── */
+.nav-work-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  padding: 20px 0;
+  gap: 10px;
+}
+.nav-work-title {
+  text-align: center;
+  color: rgba(255,255,255,0.35);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin: 0 0 6px;
+  flex-shrink: 0;
+}
+.nav-work-row {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+}
+@keyframes navWorkLeft {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes navWorkRight {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+.nav-work-track {
+  display: flex;
+  gap: 6px;
+  width: max-content;
+  animation: navWorkLeft 22s linear infinite;
+  will-change: transform;
+}
+.nav-work-track.rev {
+  animation-name: navWorkRight;
+  animation-duration: 28s;
+}
+.nav-work-photo {
+  width: 150px;
+  height: 100px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+  display: block;
+}
+
+/* Dark overlay (used by other elements) */
 .nav-overlay {
   display: none;
   position: fixed;
