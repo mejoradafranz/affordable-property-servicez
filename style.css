@@ -330,7 +330,6 @@ nav.open {
   min-width: 0;
 }
 .dropdown.open .dropdown-menu { display: block; }
-.dropdown:hover .dropdown-menu { display: none; }
 .dropdown-menu li a {
   padding: 12px 28px 12px 44px;
   font-size: 14px;
