@@ -42,11 +42,14 @@ document.querySelectorAll('.nav-links a').forEach(link => {
   });
 });
 
-// Dropdown toggle — always click-based (no hover)
+// Dropdown toggle — close others first, then toggle
 document.querySelectorAll('.dropdown > a').forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
-    link.parentElement.classList.toggle('open');
+    const parent = link.parentElement;
+    const isOpen = parent.classList.contains('open');
+    document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
+    if (!isOpen) parent.classList.add('open');
   });
 });
 

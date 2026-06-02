@@ -77,7 +77,10 @@ if (navOverlay) navOverlay.addEventListener('click', closeNav);
 document.querySelectorAll('.dropdown > a').forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
-    link.parentElement.classList.toggle('open');
+    const parent = link.parentElement;
+    const isOpen = parent.classList.contains('open');
+    document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
+    if (!isOpen) parent.classList.add('open');
   });
 });
 

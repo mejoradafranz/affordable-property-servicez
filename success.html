@@ -119,7 +119,7 @@
     function closeNav() { if(nav){nav.classList.remove('open');hamburger.classList.remove('open');if(navOverlay)navOverlay.classList.remove('active');document.body.style.overflow='';} }
     if (hamburger) hamburger.addEventListener('click', () => nav && nav.classList.contains('open') ? closeNav() : openNav());
     if (navOverlay) navOverlay.addEventListener('click', closeNav);
-    document.querySelectorAll('.dropdown > a').forEach(l => l.addEventListener('click', e => { e.preventDefault(); l.parentElement.classList.toggle('open'); }));
+    document.querySelectorAll('.dropdown > a').forEach(l => l.addEventListener('click', e => { e.preventDefault(); const p=l.parentElement,o=p.classList.contains('open'); document.querySelectorAll('.dropdown').forEach(d=>d.classList.remove('open')); if(!o)p.classList.add('open'); }));
   </script>
 </body>
 </html>

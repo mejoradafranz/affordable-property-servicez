@@ -298,13 +298,15 @@ nav.open {
 .nav-links {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 0;
   padding: 0 56px 0 12px;
   min-height: 58px;
   align-items: center;
   border-bottom: 2px solid #f0f0f0;
   flex-shrink: 0;
+  position: relative;
+  overflow-x: auto;
 }
 .nav-links > li > a {
   color: #1a1a1a;
@@ -322,26 +324,35 @@ nav.open {
 .nav-links > li > a:hover { color: #2e7d32; }
 .nav-links > li > a i { display: inline; font-size: 11px; }
 
-/* Dropdown sub-links inside full-screen nav */
+/* Dropdown — floats below links bar, does NOT affect flex layout */
 .dropdown-menu {
-  position: static;
-  box-shadow: none;
-  padding: 4px 0 4px 12px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-top: 1px solid #e8f5e9;
+  border-bottom: 3px solid #2e7d32;
+  padding: 12px 20px 16px;
   display: none;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  z-index: 50;
   min-width: 0;
-  background: none;
-  border-radius: 0;
 }
 .dropdown.open .dropdown-menu { display: block; }
 .dropdown:hover .dropdown-menu { display: none; }
+.dropdown-menu li { margin-bottom: 2px; }
 .dropdown-menu li a {
-  padding: 7px 0;
-  font-size: 13px;
-  color: #555;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #333;
   border-bottom: none;
   white-space: normal;
+  display: block;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
 }
-.dropdown-menu li a:hover { background: none; color: #2e7d32; }
+.dropdown-menu li a:hover { background: #f1f8e9; color: #2e7d32; }
 
 /* ── Our Best Work scrolling section ── */
 .nav-work-section {
