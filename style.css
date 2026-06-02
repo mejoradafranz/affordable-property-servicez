@@ -288,7 +288,7 @@ nav.open {
   flex-direction: column;
   position: fixed;
   inset: 0;
-  background: rgba(6, 14, 6, 0.97);
+  background: #fff;
   z-index: 99998;
   overflow: hidden;
   animation: navFadeIn 0.28s ease;
@@ -303,28 +303,30 @@ nav.open {
   padding: 0 56px 0 12px;
   min-height: 58px;
   align-items: center;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 2px solid #f0f0f0;
   flex-shrink: 0;
 }
 .nav-links > li > a {
-  color: rgba(255,255,255,0.82);
+  color: #1a1a1a;
   font-size: 14px;
   font-weight: 700;
   padding: 10px 14px;
   border-bottom: none;
   white-space: nowrap;
   transition: color 0.2s;
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 5px;
   width: auto;
 }
-.nav-links > li > a:hover { color: #a5d6a7; }
-.nav-links > li > a i { display: none; }
+.nav-links > li > a:hover { color: #2e7d32; }
+.nav-links > li > a i { display: inline; font-size: 11px; }
 
 /* Dropdown sub-links inside full-screen nav */
 .dropdown-menu {
   position: static;
   box-shadow: none;
-  padding: 2px 0 2px 8px;
+  padding: 4px 0 4px 12px;
   display: none;
   min-width: 0;
   background: none;
@@ -333,13 +335,13 @@ nav.open {
 .dropdown.open .dropdown-menu { display: block; }
 .dropdown:hover .dropdown-menu { display: none; }
 .dropdown-menu li a {
-  padding: 6px 0;
-  font-size: 12px;
-  color: rgba(255,255,255,0.55);
+  padding: 7px 0;
+  font-size: 13px;
+  color: #555;
   border-bottom: none;
   white-space: normal;
 }
-.dropdown-menu li a:hover { background: none; color: #a5d6a7; }
+.dropdown-menu li a:hover { background: none; color: #2e7d32; }
 
 /* ── Our Best Work scrolling section ── */
 .nav-work-section {
@@ -353,7 +355,7 @@ nav.open {
 }
 .nav-work-title {
   text-align: center;
-  color: rgba(255,255,255,0.35);
+  color: #888;
   font-family: 'Montserrat', sans-serif;
   font-size: 10px;
   font-weight: 700;
@@ -387,9 +389,9 @@ nav.open {
   animation-duration: 28s;
 }
 .nav-work-photo {
-  width: 150px;
-  height: 100px;
-  border-radius: 8px;
+  width: 220px;
+  height: 155px;
+  border-radius: 10px;
   object-fit: cover;
   flex-shrink: 0;
   display: block;
@@ -924,93 +926,6 @@ nav.open {
 .footer-credit { margin-top: 6px; font-size: 12px; color: #555; letter-spacing: 0.5px; }
 .footer-credit strong { color: #a5d6a7; letter-spacing: 1.5px; font-family: 'Montserrat', sans-serif; }
 
-/* ===== SERVICES COLLAGE OVERLAY ===== */
-.svc-collage {
-  position: fixed;
-  inset: 0;
-  z-index: 999990;
-  background: #0a0a0a;
-  display: flex;
-  flex-direction: column;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-.svc-collage.active {
-  opacity: 1;
-  pointer-events: all;
-}
-.svc-collage-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 22px;
-  flex-shrink: 0;
-}
-.svc-collage-head span {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 800;
-  font-size: 16px;
-  letter-spacing: 2px;
-  color: #fff;
-}
-.svc-collage-close {
-  background: rgba(255,255,255,0.1);
-  border: none;
-  color: #fff;
-  font-size: 17px;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s;
-  flex-shrink: 0;
-}
-.svc-collage-close:hover { background: rgba(255,255,255,0.25); }
-
-.svc-collage-grid {
-  flex: 1;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  gap: 3px;
-  padding: 0 3px 3px;
-  min-height: 0;
-}
-.svc-collage-item:last-child { grid-column: 1 / -1; }
-
-.svc-collage-item {
-  position: relative;
-  overflow: hidden;
-  display: block;
-  text-decoration: none;
-}
-.svc-collage-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.45s ease;
-}
-.svc-collage-item:hover img,
-.svc-collage-item:active img { transform: scale(1.07); }
-
-.svc-collage-label {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 28px 14px 13px;
-  background: linear-gradient(to top, rgba(0,15,5,0.88) 0%, transparent 100%);
-  color: #fff;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  line-height: 1.4;
-}
 
 /* ===== NAV SERVICE PREVIEW POPUP ===== */
 .nav-preview-popup {
