@@ -17,6 +17,7 @@ const navOverlay = document.getElementById('navOverlay');
 function openNav() {
   nav.classList.add('open');
   hamburger.classList.add('open');
+  if (navOverlay) navOverlay.classList.add('active');
   document.body.style.overflow = 'hidden';
 }
 
