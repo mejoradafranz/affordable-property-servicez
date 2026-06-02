@@ -60,7 +60,6 @@ function openNav() {
   if (!nav) return;
   nav.classList.add('open');
   hamburger.classList.add('open');
-  if (navOverlay) navOverlay.classList.add('active');
   document.body.style.overflow = 'hidden';
 }
 
