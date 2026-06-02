@@ -12,27 +12,42 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // ===== HAMBURGER MENU =====
 const hamburger = document.getElementById('hamburger');
 const nav = document.querySelector('nav');
+const navOverlay = document.getElementById('navOverlay');
+
+function openNav() {
+  nav.classList.add('open');
+  hamburger.classList.add('open');
+  if (navOverlay) navOverlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeNav() {
+  nav.classList.remove('open');
+  hamburger.classList.remove('open');
+  if (navOverlay) navOverlay.classList.remove('active');
+  document.body.style.overflow = '';
+}
 
 hamburger.addEventListener('click', () => {
-  nav.classList.toggle('open');
-  hamburger.classList.toggle('open');
+  nav.classList.contains('open') ? closeNav() : openNav();
 });
 
-// Close menu when a link is clicked
+if (navOverlay) navOverlay.addEventListener('click', closeNav);
+
+// Close menu when a non-dropdown link is clicked
 document.querySelectorAll('.nav-links a').forEach(link => {
   link.addEventListener('click', () => {
-    nav.classList.remove('open');
-    hamburger.classList.remove('open');
+    if (!link.closest('.dropdown > a') && !link.parentElement.classList.contains('dropdown')) {
+      closeNav();
+    }
   });
 });
 
-// Mobile dropdown toggle
+// Dropdown toggle — always click-based (no hover)
 document.querySelectorAll('.dropdown > a').forEach(link => {
   link.addEventListener('click', (e) => {
-    if (window.innerWidth <= 768) {
-      e.preventDefault();
-      link.parentElement.classList.toggle('open');
-    }
+    e.preventDefault();
+    link.parentElement.classList.toggle('open');
   });
 });
 

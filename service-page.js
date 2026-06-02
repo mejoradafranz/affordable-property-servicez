@@ -54,16 +54,31 @@ if (track && prevBtn && nextBtn) {
 // ===== HAMBURGER =====
 const hamburger = document.getElementById('hamburger');
 const nav = document.querySelector('nav');
-if (hamburger && nav) {
-  hamburger.addEventListener('click', () => nav.classList.toggle('open'));
+const navOverlay = document.getElementById('navOverlay');
+
+function openNav() {
+  if (!nav) return;
+  nav.classList.add('open');
+  hamburger.classList.add('open');
+  if (navOverlay) navOverlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
 }
+
+function closeNav() {
+  if (!nav) return;
+  nav.classList.remove('open');
+  hamburger.classList.remove('open');
+  if (navOverlay) navOverlay.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+if (hamburger) hamburger.addEventListener('click', () => nav.classList.contains('open') ? closeNav() : openNav());
+if (navOverlay) navOverlay.addEventListener('click', closeNav);
 
 document.querySelectorAll('.dropdown > a').forEach(link => {
   link.addEventListener('click', e => {
-    if (window.innerWidth <= 768) {
-      e.preventDefault();
-      link.parentElement.classList.toggle('open');
-    }
+    e.preventDefault();
+    link.parentElement.classList.toggle('open');
   });
 });
 

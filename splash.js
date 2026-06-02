@@ -177,6 +177,14 @@
   });
 })();
 
+// Inject nav overlay (shared across all pages)
+(function() {
+  var overlay = document.createElement('div');
+  overlay.id = 'navOverlay';
+  overlay.className = 'nav-overlay';
+  document.body.appendChild(overlay);
+})();
+
 // ===== LOGO SPLASH SCREEN =====
 (function () {
   function playChime() {

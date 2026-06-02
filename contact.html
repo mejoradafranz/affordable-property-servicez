@@ -213,8 +213,13 @@
       });
     }
     const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('navLinks');
-    if (hamburger) hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); navLinks.classList.toggle('open'); });
+    const nav = document.querySelector('nav');
+    const navOverlay = document.getElementById('navOverlay');
+    function openNav() { if(nav){nav.classList.add('open');hamburger.classList.add('open');if(navOverlay)navOverlay.classList.add('active');document.body.style.overflow='hidden';} }
+    function closeNav() { if(nav){nav.classList.remove('open');hamburger.classList.remove('open');if(navOverlay)navOverlay.classList.remove('active');document.body.style.overflow='';} }
+    if (hamburger) hamburger.addEventListener('click', () => nav && nav.classList.contains('open') ? closeNav() : openNav());
+    if (navOverlay) navOverlay.addEventListener('click', closeNav);
+    document.querySelectorAll('.dropdown > a').forEach(l => l.addEventListener('click', e => { e.preventDefault(); l.parentElement.classList.toggle('open'); }));
   </script>
 </body>
 </html>
