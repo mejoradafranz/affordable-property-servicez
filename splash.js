@@ -177,6 +177,68 @@
   });
 })();
 
+// ===== SERVICES COLLAGE OVERLAY =====
+(function () {
+  var svcList = [
+    { title: 'Landscape Design\n& Installation',    url: 'landscape-design.html',    photo: 'PHOTOS/063dea30-b1f8-41fb-a901-4f5ce91ff59b.webp' },
+    { title: 'Kitchen & Bathroom\nRemodeling',       url: 'kitchen-bathroom.html',    photo: 'PHOTOS/77261ed6-e8c5-4a6a-9ebb-c19177d411d1.webp' },
+    { title: 'Interior Remodeling\nServices',        url: 'interior-remodeling.html', photo: 'PHOTOS/24eaf447-3b5f-4b71-a951-1fde00f43cca.webp' },
+    { title: 'Outdoor Living\n& Hardscaping',        url: 'outdoor-living.html',      photo: 'PHOTOS/1bc91e72-8341-47ad-b665-6cbf0dfd636b.webp' },
+    { title: 'Irrigation &\nDrainage Systems',       url: 'irrigation-drainage.html', photo: 'PHOTOS/6640620c-8132-478b-a2ef-2c8c6276c846.webp' }
+  ];
+
+  var collage = document.createElement('div');
+  collage.id = 'servicesCollage';
+  collage.className = 'svc-collage';
+
+  var itemsHTML = svcList.map(function (s) {
+    return '<a href="' + s.url + '" class="svc-collage-item">' +
+      '<img src="' + s.photo + '" alt="' + s.title.replace('\n', ' ') + '" loading="lazy">' +
+      '<div class="svc-collage-label">' + s.title.replace('\n', '<br>') + '</div>' +
+    '</a>';
+  }).join('');
+
+  collage.innerHTML =
+    '<div class="svc-collage-head">' +
+      '<span>OUR SERVICES</span>' +
+      '<button class="svc-collage-close" id="svcCollageClose">&#x2715;</button>' +
+    '</div>' +
+    '<div class="svc-collage-grid">' + itemsHTML + '</div>';
+
+  document.body.appendChild(collage);
+
+  function openCollage() {
+    collage.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    // Close the nav panel so collage gets full focus
+    var nav = document.querySelector('nav');
+    var hbg = document.getElementById('hamburger');
+    var ovl = document.getElementById('navOverlay');
+    if (nav) nav.classList.remove('open');
+    if (hbg) hbg.classList.remove('open');
+    if (ovl) ovl.classList.remove('active');
+  }
+
+  function closeCollage() {
+    collage.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('svcCollageClose').addEventListener('click', closeCollage);
+
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.dropdown > a').forEach(function (link) {
+      if (link.textContent.trim().toLowerCase().indexOf('service') !== -1) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          openCollage();
+        });
+      }
+    });
+  });
+})();
+
 // Inject nav overlay (shared across all pages)
 (function() {
   var overlay = document.createElement('div');
