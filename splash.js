@@ -1,17 +1,33 @@
 
-// Inject fusion photos into Services dropdown
+// Inject fusion photos into Services and Galleries dropdowns
 (function () {
+  var fusionPhotos = {
+    'service': [
+      'PHOTOS/1bc91e72-8341-47ad-b665-6cbf0dfd636b.webp',
+      'PHOTOS/24eaf447-3b5f-4b71-a951-1fde00f43cca.webp'
+    ],
+    'galleri': [
+      'PHOTOS/43f58220-ec86-4cda-a9f7-1b6710546dec.webp',
+      'PHOTOS/604f7b52-9f44-44cb-a3ce-e39701b0aac7.webp'
+    ]
+  };
+
   document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.dropdown').forEach(function (dd) {
       var link = dd.querySelector('a');
-      if (!link || link.textContent.toLowerCase().indexOf('service') === -1) return;
+      if (!link) return;
+      var text = link.textContent.toLowerCase();
+      var photos = null;
+      if (text.indexOf('service') !== -1) photos = fusionPhotos['service'];
+      else if (text.indexOf('galleri') !== -1) photos = fusionPhotos['galleri'];
+      if (!photos) return;
       var menu = dd.querySelector('.dropdown-menu');
       if (!menu) return;
       var fusion = document.createElement('div');
       fusion.className = 'svc-fusion';
       fusion.innerHTML =
-        '<img src="PHOTOS/1bc91e72-8341-47ad-b665-6cbf0dfd636b.webp" alt="Our work">' +
-        '<img src="PHOTOS/24eaf447-3b5f-4b71-a951-1fde00f43cca.webp" alt="Our work">';
+        '<img src="' + photos[0] + '" alt="Our work">' +
+        '<img src="' + photos[1] + '" alt="Our work">';
       menu.insertBefore(fusion, menu.firstChild);
     });
   });
