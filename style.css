@@ -330,6 +330,36 @@ nav.open {
   min-width: 0;
 }
 .dropdown.open .dropdown-menu { display: block; }
+
+/* ── Services fusion photos ── */
+.svc-fusion {
+  position: relative;
+  height: 160px;
+  overflow: hidden;
+  display: block;
+  animation: svcFusionIn 0.45s ease;
+}
+@keyframes svcFusionIn {
+  from { opacity: 0; transform: scaleY(0.85); }
+  to   { opacity: 1; transform: scaleY(1); }
+}
+.svc-fusion img {
+  position: absolute;
+  top: 0;
+  width: 65%;
+  height: 100%;
+  object-fit: cover;
+}
+.svc-fusion img:first-child {
+  left: 0;
+  -webkit-mask-image: linear-gradient(to right, black 45%, transparent 100%);
+  mask-image: linear-gradient(to right, black 45%, transparent 100%);
+}
+.svc-fusion img:last-child {
+  right: 0;
+  -webkit-mask-image: linear-gradient(to left, black 45%, transparent 100%);
+  mask-image: linear-gradient(to left, black 45%, transparent 100%);
+}
 .dropdown-menu li a {
   padding: 12px 28px 12px 44px;
   font-size: 14px;

@@ -1,4 +1,22 @@
 
+// Inject fusion photos into Services dropdown
+(function () {
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.dropdown').forEach(function (dd) {
+      var link = dd.querySelector('a');
+      if (!link || link.textContent.toLowerCase().indexOf('service') === -1) return;
+      var menu = dd.querySelector('.dropdown-menu');
+      if (!menu) return;
+      var fusion = document.createElement('div');
+      fusion.className = 'svc-fusion';
+      fusion.innerHTML =
+        '<img src="PHOTOS/1bc91e72-8341-47ad-b665-6cbf0dfd636b.webp" alt="Our work">' +
+        '<img src="PHOTOS/24eaf447-3b5f-4b71-a951-1fde00f43cca.webp" alt="Our work">';
+      menu.insertBefore(fusion, menu.firstChild);
+    });
+  });
+})();
+
 // Inject "Our Best Work" scrolling section into nav (runs on all pages)
 (function () {
   var row1 = [
