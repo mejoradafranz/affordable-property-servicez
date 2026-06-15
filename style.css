@@ -171,6 +171,7 @@ ul { list-style: none; }
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
   padding: 14px 20px 10px;
   border-bottom: 2px solid rgba(255,255,255,0.12);
   background: linear-gradient(135deg, #0b1f0b 0%, #1a3d1a 25%, #2d6b30 55%, #1a3d1a 80%, #0b1f0b 100%);
@@ -196,6 +197,133 @@ ul { list-style: none; }
 }
 .logo-img:hover,
 .logo-img:active { transform: scale(1.18); }
+
+/* ===== HEADER ACTION BUTTONS (injected by splash.js) ===== */
+.header-action-btns {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 2;
+}
+
+.header-call-btn,
+.header-quote-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  border-radius: 6px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.25s, transform 0.15s;
+  border: none;
+  white-space: nowrap;
+}
+
+.header-call-btn {
+  background: #ff6f00;
+  color: #fff;
+}
+.header-call-btn:hover { background: #e65100; transform: translateY(-1px); }
+
+.header-quote-btn {
+  background: #2e7d32;
+  color: #fff;
+}
+.header-quote-btn:hover { background: #1b5e20; transform: translateY(-1px); }
+
+/* Hide old nav-cta since buttons are now in logo bar */
+.nav-cta { display: none !important; }
+
+/* On very small phones show icons only */
+@media (max-width: 420px) {
+  .header-call-btn span,
+  .header-quote-btn span { display: none; }
+  .header-call-btn,
+  .header-quote-btn { padding: 9px 12px; }
+}
+
+/* ===== FREE QUOTE POPUP MODAL ===== */
+.quote-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 999999;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.quote-modal.active { display: flex; }
+
+.quote-modal-inner {
+  background: #fff;
+  border-radius: 16px;
+  padding: 40px 36px 36px;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: modalPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modalPop {
+  from { opacity: 0; transform: scale(0.92) translateY(20px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.quote-modal-close {
+  position: absolute;
+  top: 14px; right: 18px;
+  background: none; border: none;
+  font-size: 30px; line-height: 1;
+  color: #888; cursor: pointer;
+}
+.quote-modal-close:hover { color: #111; }
+
+.quote-modal-inner h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.55rem; font-weight: 800;
+  color: #1a1a1a; margin: 0 0 8px;
+}
+
+.quote-modal-inner > p {
+  color: #666; font-size: 0.88rem;
+  margin-bottom: 24px; line-height: 1.6;
+}
+
+.quote-modal-form {
+  display: flex; flex-direction: column; gap: 13px;
+}
+
+.quote-modal-form input,
+.quote-modal-form select,
+.quote-modal-form textarea {
+  width: 100%; padding: 11px 15px;
+  border: 1.5px solid #ddd; border-radius: 8px;
+  font-size: 14px; font-family: 'Open Sans', sans-serif;
+  box-sizing: border-box; outline: none;
+  transition: border-color 0.2s;
+}
+.quote-modal-form input:focus,
+.quote-modal-form select:focus,
+.quote-modal-form textarea:focus { border-color: #2e7d32; }
+
+.quote-modal-form textarea { resize: vertical; min-height: 90px; }
+
+.quote-modal-success {
+  text-align: center; color: #2e7d32;
+  font-weight: 700; font-size: 1.1rem;
+  padding: 40px 0; margin: 0;
+}
 
 .nav-container {
   display: flex;

@@ -85,6 +85,76 @@
   document.body.appendChild(overlay);
 })();
 
+// Inject Call/Text + Free Quote buttons into logo bar + popup modal (all pages)
+(function () {
+  document.addEventListener('DOMContentLoaded', function () {
+    var logoBar = document.querySelector('.header-logo-bar');
+    if (!logoBar) return;
+
+    // Buttons in logo bar
+    var btns = document.createElement('div');
+    btns.className = 'header-action-btns';
+    btns.innerHTML =
+      '<a href="tel:+14074078' + '000" class="header-call-btn"><i class="fas fa-phone"></i><span> Call / Text</span></a>' +
+      '<button class="header-quote-btn" id="openQuoteModal"><i class="fas fa-file-alt"></i><span> Free Quote</span></button>';
+    logoBar.appendChild(btns);
+
+    // Modal HTML
+    var modal = document.createElement('div');
+    modal.id = 'quoteModal';
+    modal.className = 'quote-modal';
+    modal.innerHTML =
+      '<div class="quote-modal-inner">' +
+        '<button class="quote-modal-close" id="closeQuoteModal">&times;</button>' +
+        '<h2>Get a Free Quote</h2>' +
+        '<p>Fill out the form and Robert will personally reach out within 24 hours.</p>' +
+        '<form class="quote-modal-form" id="quoteModalForm">' +
+          '<input type="hidden" name="access_key" value="e6f3572e-8200-48e6-aa20-116547493455" />' +
+          '<input type="hidden" name="subject" value="New Quote Request – Affordable Property Servicez" />' +
+          '<input type="text" name="name" placeholder="Your Name" required />' +
+          '<input type="email" name="email" placeholder="Your Email" required />' +
+          '<input type="tel" name="phone" placeholder="Phone Number" />' +
+          '<select name="service">' +
+            '<option value="">Select a Service</option>' +
+            '<option>Landscape Design &amp; Installation</option>' +
+            '<option>Kitchen &amp; Bathroom Remodeling</option>' +
+            '<option>Interior Remodeling Services</option>' +
+            '<option>Outdoor Living &amp; Hardscaping</option>' +
+            '<option>Irrigation &amp; Drainage Systems</option>' +
+          '</select>' +
+          '<textarea rows="4" name="message" placeholder="Tell us about your project..."></textarea>' +
+          '<button type="submit" class="btn-primary" style="width:100%">Send Message</button>' +
+        '</form>' +
+      '</div>';
+    document.body.appendChild(modal);
+
+    function openModal() { modal.classList.add('active'); document.body.style.overflow = 'hidden'; }
+    function closeModal() { modal.classList.remove('active'); document.body.style.overflow = ''; }
+
+    document.getElementById('openQuoteModal').addEventListener('click', openModal);
+    document.getElementById('closeQuoteModal').addEventListener('click', closeModal);
+    modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+
+    document.getElementById('quoteModalForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      var btn = this.querySelector('button[type="submit"]');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      try {
+        var res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(this) });
+        var json = await res.json();
+        if (json.success) {
+          this.innerHTML = '<p class="quote-modal-success">&#10003; Message sent! We\'ll be in touch shortly.</p>';
+        } else { throw new Error(); }
+      } catch (_) {
+        btn.textContent = 'Failed. Try Again.';
+        btn.style.background = '#c62828';
+        btn.disabled = false;
+      }
+    });
+  });
+})();
+
 // Transparent header → white on scroll (runs on all pages)
 (function () {
   document.addEventListener('DOMContentLoaded', function () {
