@@ -1049,19 +1049,19 @@ nav.open {
   background: rgba(10, 30, 70, 0.3);
 }
 
-.hero-split-content {
+.hero-split-label {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 2;
+  z-index: 6;
   color: #fff;
   text-align: center;
   pointer-events: none;
-  width: 30%;
+  width: 28%;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-.hero-split-indoor .hero-split-content { left: 4%; }
-.hero-split-outdoor .hero-split-content { right: 4%; }
+.hero-split-label-indoor { left: 5%; }
+.hero-split-label-outdoor { right: 5%; }
 
 .hero-split-tag {
   display: inline-block;
@@ -1144,24 +1144,28 @@ nav.open {
   .hero-split-outdoor {
     clip-path: polygon(0 52%, 100% 48%, 100% 100%, 0 100%);
   }
-  .hero-split-indoor .hero-split-content {
-    left: 50%; top: 28%;
-    width: 80%;
+  /* Labels are outside panels so they are never clipped */
+  .hero-split-label-indoor {
+    left: 50%; top: 22%;
+    width: 85%;
     transform: translate(-50%, -50%);
   }
-  .hero-split-outdoor .hero-split-content {
-    right: auto; left: 50%; top: 76%;
-    width: 80%;
+  .hero-split-label-outdoor {
+    right: auto; left: 50%; top: 78%;
+    width: 85%;
     transform: translate(-50%, -50%);
   }
-  .hero-split-content h2 { font-size: 1.4rem; }
+  .hero-split-label h2 { font-size: 1.3rem; }
+  .hero-split-label p { font-size: 0.85rem; }
   .hero-split-brand {
     position: absolute;
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-    padding: 14px 22px;
-    max-width: 230px;
+    padding: 10px 18px;
+    max-width: 240px;
   }
-  .hero-split-brand h1 { font-size: 1rem; }
-  .hero-split-brand > p { margin-bottom: 12px; font-size: 0.75rem; }
+  .hero-split-brand h1 { font-size: 0.95rem; }
+  .hero-split-brand > p { margin-bottom: 8px; font-size: 0.72rem; }
+  .hero-split-tagline { display: none; }
+  .hero-split-cta { font-size: 0.8rem; padding: 8px 18px; }
 }
