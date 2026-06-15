@@ -981,3 +981,179 @@ nav.open {
   .review-marquee-track { gap: 12px; }
   .dropdown-menu { min-width: 0; width: calc(100vw - 40px); }
 }
+
+/* ===== HERO SPLIT ===== */
+.hero-split {
+  position: relative;
+  height: 100vh;
+  min-height: 520px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-split-panel {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: clip-path 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  text-decoration: none;
+}
+
+.hero-split-panel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transition: background 0.4s ease;
+}
+
+.hero-split-indoor {
+  background-image: url('PHOTOS/77261ed6-e8c5-4a6a-9ebb-c19177d411d1.webp');
+  clip-path: polygon(0 0, 57% 0, 43% 100%, 0 100%);
+}
+
+.hero-split-indoor::after {
+  background: rgba(15, 50, 15, 0.52);
+}
+
+.hero-split-outdoor {
+  background-image: url('PHOTOS/0c2ee8bb-f1a9-42b6-8740-f7ec22757643.webp');
+  clip-path: polygon(57% 0, 100% 0, 100% 100%, 43% 100%);
+}
+
+.hero-split-outdoor::after {
+  background: rgba(10, 30, 70, 0.52);
+}
+
+/* When indoor is hovered — indoor expands, outdoor contracts */
+.hero-split:has(.hero-split-indoor:hover) .hero-split-indoor {
+  clip-path: polygon(0 0, 67% 0, 53% 100%, 0 100%);
+}
+.hero-split:has(.hero-split-indoor:hover) .hero-split-outdoor {
+  clip-path: polygon(67% 0, 100% 0, 100% 100%, 53% 100%);
+}
+.hero-split:has(.hero-split-indoor:hover) .hero-split-indoor::after {
+  background: rgba(15, 50, 15, 0.3);
+}
+
+/* When outdoor is hovered — outdoor expands, indoor contracts */
+.hero-split:has(.hero-split-outdoor:hover) .hero-split-outdoor {
+  clip-path: polygon(47% 0, 100% 0, 100% 100%, 33% 100%);
+}
+.hero-split:has(.hero-split-outdoor:hover) .hero-split-indoor {
+  clip-path: polygon(0 0, 47% 0, 33% 100%, 0 100%);
+}
+.hero-split:has(.hero-split-outdoor:hover) .hero-split-outdoor::after {
+  background: rgba(10, 30, 70, 0.3);
+}
+
+.hero-split-content {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  color: #fff;
+  text-align: center;
+  pointer-events: none;
+  width: 30%;
+}
+
+.hero-split-indoor .hero-split-content { left: 4%; }
+.hero-split-outdoor .hero-split-content { right: 4%; }
+
+.hero-split-tag {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 5px 16px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
+
+.hero-split-content h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin: 0 0 10px;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.7);
+  line-height: 1.25;
+}
+
+.hero-split-content p {
+  font-size: 0.9rem;
+  opacity: 0.88;
+  margin: 0;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+}
+
+/* Center brand card */
+.hero-split-brand {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.52);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 28px 40px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  max-width: 360px;
+  pointer-events: none;
+}
+
+.hero-split-brand h1 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin: 0 0 8px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  line-height: 1.3;
+}
+
+.hero-split-brand > p {
+  font-size: 0.82rem;
+  opacity: 0.8;
+  margin: 0 0 20px;
+  letter-spacing: 0.5px;
+}
+
+.hero-split-cta {
+  pointer-events: all;
+  display: inline-block;
+}
+
+/* Mobile: left/right becomes top/bottom */
+@media (max-width: 640px) {
+  .hero-split-indoor {
+    clip-path: polygon(0 0, 100% 0, 100% 52%, 0 48%);
+  }
+  .hero-split-outdoor {
+    clip-path: polygon(0 52%, 100% 48%, 100% 100%, 0 100%);
+  }
+  .hero-split-indoor .hero-split-content {
+    left: 50%; top: 28%;
+    width: 80%;
+    transform: translate(-50%, -50%);
+  }
+  .hero-split-outdoor .hero-split-content {
+    right: auto; left: 50%; top: 76%;
+    width: 80%;
+    transform: translate(-50%, -50%);
+  }
+  .hero-split-content h2 { font-size: 1.4rem; }
+  .hero-split-brand {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 14px 22px;
+    max-width: 230px;
+  }
+  .hero-split-brand h1 { font-size: 1rem; }
+  .hero-split-brand > p { margin-bottom: 12px; font-size: 0.75rem; }
+}
