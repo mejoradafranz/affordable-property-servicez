@@ -1123,6 +1123,14 @@ nav.open {
   letter-spacing: 0.5px;
 }
 
+.hero-split-tagline {
+  font-size: 0.78rem;
+  opacity: 0.75;
+  margin: 0 0 18px;
+  line-height: 1.5;
+  letter-spacing: 0.2px;
+}
+
 .hero-split-cta {
   pointer-events: all;
   display: inline-block;
