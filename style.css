@@ -214,15 +214,14 @@ ul { list-style: none; }
 .header-quote-btn {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 9px 18px;
-  border-radius: 6px;
+  gap: 7px;
+  padding: 11px 20px;
+  border-radius: 7px;
   font-family: 'Montserrat', sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   cursor: pointer;
   text-decoration: none;
-  transition: background 0.25s, transform 0.15s;
   border: none;
   white-space: nowrap;
 }
@@ -230,14 +229,29 @@ ul { list-style: none; }
 .header-call-btn {
   background: #ff6f00;
   color: #fff;
+  transition: background 0.25s, transform 0.15s;
 }
 .header-call-btn:hover { background: #e65100; transform: translateY(-1px); }
 
-.header-quote-btn {
-  background: #2e7d32;
-  color: #fff;
+/* Free Quote — pulsing glow to make it stand out */
+@keyframes quotePulse {
+  0%   { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.75); }
+  60%  { box-shadow: 0 0 0 10px rgba(76, 175, 80, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
 }
-.header-quote-btn:hover { background: #1b5e20; transform: translateY(-1px); }
+
+.header-quote-btn {
+  background: #43a047;
+  color: #fff;
+  animation: quotePulse 2s ease-out infinite;
+  transition: background 0.25s, transform 0.15s;
+}
+.header-quote-btn:hover {
+  background: #2e7d32;
+  transform: translateY(-1px);
+  animation: none;
+  box-shadow: 0 0 0 4px rgba(46, 125, 50, 0.4);
+}
 
 /* Hide old nav-cta since buttons are now in logo bar */
 .nav-cta { display: none !important; }
