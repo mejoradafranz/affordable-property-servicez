@@ -91,13 +91,19 @@
     var logoBar = document.querySelector('.header-logo-bar');
     if (!logoBar) return;
 
-    // Buttons in logo bar
-    var btns = document.createElement('div');
-    btns.className = 'header-action-btns';
-    btns.innerHTML =
-      '<a href="tel:+14074078' + '000" class="header-call-btn"><i class="fas fa-phone"></i><span> Call / Text</span></a>' +
-      '<button class="header-quote-btn" id="openQuoteModal"><i class="fas fa-file-alt"></i><span> Free Quote</span></button>';
-    logoBar.appendChild(btns);
+    // Call / Text — LEFT side (inserted before the logo)
+    var callBtn = document.createElement('a');
+    callBtn.href = 'tel:+14074078000';
+    callBtn.className = 'header-call-btn';
+    callBtn.innerHTML = '<i class="fas fa-phone"></i> Call / Text';
+    logoBar.insertBefore(callBtn, logoBar.firstChild);
+
+    // Free Quote — RIGHT side (appended after the logo)
+    var quoteBtn = document.createElement('button');
+    quoteBtn.className = 'header-quote-btn';
+    quoteBtn.id = 'openQuoteModal';
+    quoteBtn.innerHTML = '<i class="fas fa-file-alt"></i> Free Quote';
+    logoBar.appendChild(quoteBtn);
 
     // Modal HTML
     var modal = document.createElement('div');

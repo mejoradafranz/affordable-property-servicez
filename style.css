@@ -169,9 +169,8 @@ ul { list-style: none; }
 
 .header-logo-bar {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  position: relative;
   padding: 14px 20px 10px;
   border-bottom: 2px solid rgba(255,255,255,0.12);
   background: linear-gradient(135deg, #0b1f0b 0%, #1a3d1a 25%, #2d6b30 55%, #1a3d1a 80%, #0b1f0b 100%);
@@ -199,17 +198,6 @@ ul { list-style: none; }
 .logo-img:active { transform: scale(1.18); }
 
 /* ===== HEADER ACTION BUTTONS (injected by splash.js) ===== */
-.header-action-btns {
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  z-index: 2;
-}
-
 .header-call-btn,
 .header-quote-btn {
   display: inline-flex;
@@ -224,6 +212,7 @@ ul { list-style: none; }
   text-decoration: none;
   border: none;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .header-call-btn {
@@ -256,20 +245,10 @@ ul { list-style: none; }
 /* Hide old nav-cta since buttons are now in logo bar */
 .nav-cta { display: none !important; }
 
-/* Tablet & mobile: move buttons to LEFT so logo stays visible */
-@media (max-width: 1024px) {
-  .header-action-btns {
-    right: auto;
-    left: 14px;
-  }
-}
-
-/* Small phones: hide button text, show icons only */
-@media (max-width: 600px) {
-  .header-call-btn span,
-  .header-quote-btn span { display: none; }
+/* Small phones: slightly tighter padding but text always visible */
+@media (max-width: 480px) {
   .header-call-btn,
-  .header-quote-btn { padding: 9px 11px; gap: 0; }
+  .header-quote-btn { padding: 9px 12px; font-size: 12px; gap: 5px; }
 }
 
 /* ===== FREE QUOTE POPUP MODAL ===== */
