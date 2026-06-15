@@ -166,8 +166,19 @@ ul { list-style: none; }
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 12px 20px 8px;
-  border-bottom: 1px solid #f0f0f0;
+  padding: 14px 20px 10px;
+  border-bottom: 2px solid rgba(255,255,255,0.12);
+  background: linear-gradient(135deg, #0b1f0b 0%, #1a3d1a 25%, #2d6b30 55%, #1a3d1a 80%, #0b1f0b 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.header-logo-bar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(120,200,90,0.14) 0%, transparent 68%);
+  pointer-events: none;
 }
 
 .logo-img {
