@@ -256,12 +256,20 @@ ul { list-style: none; }
 /* Hide old nav-cta since buttons are now in logo bar */
 .nav-cta { display: none !important; }
 
-/* On very small phones show icons only */
-@media (max-width: 420px) {
+/* Tablet & mobile: move buttons to LEFT so logo stays visible */
+@media (max-width: 1024px) {
+  .header-action-btns {
+    right: auto;
+    left: 14px;
+  }
+}
+
+/* Small phones: hide button text, show icons only */
+@media (max-width: 600px) {
   .header-call-btn span,
   .header-quote-btn span { display: none; }
   .header-call-btn,
-  .header-quote-btn { padding: 9px 12px; }
+  .header-quote-btn { padding: 9px 11px; gap: 0; }
 }
 
 /* ===== FREE QUOTE POPUP MODAL ===== */
