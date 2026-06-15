@@ -85,6 +85,23 @@
   document.body.appendChild(overlay);
 })();
 
+// Transparent header → white on scroll (runs on all pages)
+(function () {
+  document.addEventListener('DOMContentLoaded', function () {
+    var hdr = document.getElementById('header');
+    if (!hdr) return;
+    function check() {
+      if (window.scrollY > 60) {
+        hdr.classList.add('scrolled');
+      } else {
+        hdr.classList.remove('scrolled');
+      }
+    }
+    window.addEventListener('scroll', check, { passive: true });
+    check();
+  });
+})();
+
 // ===== LOGO SPLASH SCREEN =====
 (function () {
   function playChime() {

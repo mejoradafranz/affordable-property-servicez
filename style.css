@@ -157,9 +157,14 @@ ul { list-style: none; }
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 1000;
+  background: transparent;
+  box-shadow: none;
+  transition: background 0.35s ease, box-shadow 0.35s ease;
+}
+
+#header.scrolled {
   background: rgba(255,255,255,0.97);
   box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-  transition: background 0.3s;
 }
 
 .header-logo-bar {
@@ -279,11 +284,13 @@ nav { display: none; }
   display: block;
   width: 26px;
   height: 2.5px;
-  background: #333;
+  background: #fff;
   border-radius: 3px;
-  transition: transform 0.32s ease, opacity 0.2s ease;
+  transition: transform 0.32s ease, opacity 0.2s ease, background 0.35s ease;
   transform-origin: center;
 }
+#header.scrolled .hamburger span { background: #333; }
+.hamburger.open span { background: #1a1a1a; }
 .hamburger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
 .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .hamburger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
