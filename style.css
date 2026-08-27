@@ -1311,3 +1311,76 @@ nav.open {
   .hero-split-tagline { display: none; }
   .hero-split-cta { font-size: 0.8rem; padding: 8px 18px; }
 }
+
+/* ===== HEADER LOGO BAR CENTER CLUSTER (nav sits beside the logo; buttons stay in the corners) ===== */
+.logo-bar-center {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+/* Desktop-only inline nav injected by splash.js — hidden on mobile (hamburger menu handles nav there) */
+.header-inline-nav {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ===== DESKTOP HEADER (nav links live next to Call/Text + Free Quote; hamburger row removed) ===== */
+@media (min-width: 1000px) {
+  .nav-container { display: none; }
+
+  .header-logo-bar { flex-wrap: nowrap; }
+
+  .header-inline-nav {
+    display: flex;
+  }
+
+  .header-inline-nav > li > a {
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.45);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 19px;
+    padding: 8px 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+    border-radius: 4px;
+    transition: color 0.3s;
+  }
+  .header-inline-nav > li > a:hover { color: #a5d6a7; }
+
+  #header.scrolled .header-inline-nav > li > a { color: #1a1a1a; text-shadow: none; }
+  #header.scrolled .header-inline-nav > li > a:hover { color: #2e7d32; }
+
+  .header-inline-nav .dropdown { position: relative; }
+  .header-inline-nav .dropdown:hover > a i { transform: rotate(180deg); }
+
+  .header-inline-nav .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: none;
+    background: #fff;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    border-radius: 6px;
+    min-width: 240px;
+    padding: 8px 0;
+    z-index: 999;
+  }
+  .header-inline-nav .dropdown:hover .dropdown-menu { display: block; }
+  .header-inline-nav .dropdown-menu li a {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #444;
+    text-shadow: none;
+    display: block;
+  }
+  .header-inline-nav .dropdown-menu li a:hover { color: #2e7d32; background: #f1f8e9; }
+}

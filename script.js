@@ -42,9 +42,11 @@ document.querySelectorAll('.nav-links a').forEach(link => {
   });
 });
 
-// Dropdown toggle — close others first, then toggle
+// Dropdown toggle — close others first, then toggle (mobile menu only;
+// on desktop the dropdown opens on hover and the link navigates normally)
 document.querySelectorAll('.dropdown > a').forEach(link => {
   link.addEventListener('click', (e) => {
+    if (window.matchMedia('(min-width: 1000px)').matches) return;
     e.preventDefault();
     const parent = link.parentElement;
     const isOpen = parent.classList.contains('open');

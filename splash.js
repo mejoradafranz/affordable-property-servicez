@@ -90,19 +90,45 @@
   document.addEventListener('DOMContentLoaded', function () {
     var logoBar = document.querySelector('.header-logo-bar');
     if (!logoBar) return;
+    var logoLink = logoBar.querySelector('a');
 
-    // Call / Text — LEFT side (inserted before the logo)
+    // Call / Text button
     var callBtn = document.createElement('a');
     callBtn.href = 'tel:+14074078000';
     callBtn.className = 'header-call-btn';
     callBtn.innerHTML = '<i class="fas fa-phone"></i> Call / Text';
-    logoBar.insertBefore(callBtn, logoBar.firstChild);
 
-    // Free Quote — RIGHT side (appended after the logo)
+    // Free Quote button
     var quoteBtn = document.createElement('button');
     quoteBtn.className = 'header-quote-btn';
     quoteBtn.id = 'openQuoteModal';
     quoteBtn.innerHTML = '<i class="fas fa-file-alt"></i> Free Quote';
+
+    // Desktop-only inline nav — cloned from the main menu so Home/Services sit
+    // next to Call/Text and Galleries/Reviews/Contact sit next to Free Quote.
+    // (Hidden on mobile via CSS; the original hamburger menu still handles nav there.)
+    var leftNav = document.createElement('ul');
+    leftNav.className = 'header-inline-nav header-inline-nav-left';
+    var rightNav = document.createElement('ul');
+    rightNav.className = 'header-inline-nav header-inline-nav-right';
+
+    var navLinksList = document.getElementById('navLinks');
+    if (navLinksList) {
+      var allLis = Array.prototype.slice.call(navLinksList.children);
+      allLis.slice(0, 2).forEach(function (li) { leftNav.appendChild(li.cloneNode(true)); });
+      allLis.slice(2).forEach(function (li) { rightNav.appendChild(li.cloneNode(true)); });
+    }
+
+    // Center cluster: nav sits right beside the logo; Call/Text and Free Quote
+    // stay pinned to the far corners of the bar.
+    var centerWrap = document.createElement('div');
+    centerWrap.className = 'logo-bar-center';
+    centerWrap.appendChild(leftNav);
+    centerWrap.appendChild(logoLink);
+    centerWrap.appendChild(rightNav);
+
+    logoBar.appendChild(centerWrap);
+    logoBar.insertBefore(callBtn, centerWrap);
     logoBar.appendChild(quoteBtn);
 
     // Modal HTML
