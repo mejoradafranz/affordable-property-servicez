@@ -1046,6 +1046,12 @@ nav.open {
   margin-bottom: 20px;
 }
 
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .social-icon {
   display: inline-flex;
   align-items: center;
