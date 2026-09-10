@@ -143,6 +143,7 @@
         '<form class="quote-modal-form" id="quoteModalForm">' +
           '<input type="hidden" name="access_key" value="e6f3572e-8200-48e6-aa20-116547493455" />' +
           '<input type="hidden" name="subject" value="New Quote Request – Affordable Property Servicez" />' +
+          '<input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" />' +
           '<input type="text" name="name" placeholder="Your Name" required />' +
           '<input type="email" name="email" placeholder="Your Email" required />' +
           '<input type="tel" name="phone" placeholder="Phone Number" />' +
