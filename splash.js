@@ -4,7 +4,7 @@
   var fusionPhotos = {
     'service': [
       'PHOTOS/1bc91e72-8341-47ad-b665-6cbf0dfd636b.webp',
-      'PHOTOS/24eaf447-3b5f-4b71-a951-1fde00f43cca.webp'
+      'PHOTOS/flooring%208.webp'
     ],
     'galleri': [
       'PHOTOS/43f58220-ec86-4cda-a9f7-1b6710546dec.webp',
@@ -42,16 +42,16 @@
     'PHOTOS/1bc91e72-8341-47ad-b665-6cbf0dfd636b.webp',
     'PHOTOS/1c4769b7-2f8f-4578-ba8c-588a3ea19e4c.webp',
     'PHOTOS/24d8f22e-2460-439b-a41e-0266a5bbd3ee.webp',
-    'PHOTOS/24eaf447-3b5f-4b71-a951-1fde00f43cca.webp',
+    'PHOTOS/flooring%208.webp',
     'PHOTOS/273f6bc1-c6a9-4be1-83b9-a792f49a9091.webp'
   ];
   var row2 = [
     'PHOTOS/2f764107-39ef-4357-8fa9-2529e0cba746.webp',
-    'PHOTOS/33c270ae-5f2f-4eba-a91e-7b8585c89c11.webp',
+    'PHOTOS/flooring%207.webp',
     'PHOTOS/3b1b72bf-cfd4-452a-8219-65465c71811b.webp',
     'PHOTOS/43f58220-ec86-4cda-a9f7-1b6710546dec.webp',
     'PHOTOS/4d384c9f-e69d-45fb-88cb-79bcf05be0a5.webp',
-    'PHOTOS/59774f8c-fa65-467c-a37c-430aa5f3c689.webp',
+    'PHOTOS/flooring%202.webp',
     'PHOTOS/604f7b52-9f44-44cb-a3ce-e39701b0aac7.webp',
     'PHOTOS/6640620c-8132-478b-a2ef-2c8c6276c846.webp'
   ];
