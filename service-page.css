@@ -173,7 +173,8 @@
   font-size: 20px; font-weight: 800; color: #1a1a1a; margin-bottom: 10px;
 }
 .about-category > p { font-size: 14px; color: #666; margin-bottom: 16px; }
-.about-tag-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.about-tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.svc-intro-text .about-tag-list { margin-top: -4px; }
 .about-tag {
   background: #f1f8e9;
   color: #2e7d32;
