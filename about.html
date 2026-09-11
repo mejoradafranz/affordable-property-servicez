@@ -1,11 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Message Sent | Affordable Property Servicez LLC</title>
+  <title>About Us | Affordable Property Servicez LLC</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="gallery.css" />
+  <link rel="stylesheet" href="service-page.css" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
@@ -31,6 +31,7 @@
               <li><a href="interior-remodeling.html">Interior Remodeling Services</a></li>
               <li><a href="outdoor-living.html">Outdoor Living & Hardscaping</a></li>
               <li><a href="irrigation-drainage.html">Irrigation & Drainage Systems</a></li>
+              <li><a href="flooring.html">Flooring Services</a></li>
             </ul>
           </li>
           <li class="dropdown">
@@ -53,15 +54,84 @@
     </div>
   </header>
 
-  <!-- SUCCESS -->
-  <section class="success-section">
-    <div class="success-inner">
-      <div class="success-icon">
-        <i class="fas fa-check"></i>
+  <!-- HERO -->
+  <section class="svc-hero" style="background-image: url('PHOTOS/b4f5d921-d936-4d5c-bde0-1122095bf3ae.webp');">
+    <div class="svc-hero-overlay"></div>
+    <div class="svc-hero-content">
+      <p class="svc-breadcrumb"><a href="index.html">Home</a> <i class="fas fa-chevron-right"></i> About Us</p>
+      <h1>About Us</h1>
+      <p>Transforming Homes. Inside &amp; Out.</p>
+      <a href="contact.html" class="btn-primary">Get a Free Quote</a>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="svc-intro">
+    <div class="container">
+      <div class="svc-intro-grid">
+        <div class="svc-intro-text">
+          <h2>Who We Are</h2>
+          <div class="section-divider"></div>
+          <p>At APS, we specialize in transforming homes and properties with quality craftsmanship and attention to detail. From interior remodeling to complete exterior improvements, we bring your vision to life.</p>
+          <p>Whether you're updating a single room or transforming your entire property, APS is here to make your project simple, seamless, and built to last.</p>
+          <a href="contact.html" class="btn-primary">Get a Free Quote</a>
+        </div>
+        <div class="svc-intro-image">
+          <img src="PHOTOS/b46b7335-b8f9-4cca-814f-d0402a6d99df.webp" alt="Our Team" />
+        </div>
       </div>
-      <h1>Message Sent!</h1>
-      <p>Thank you for reaching out to Affordable Property Servicez LLC. Robert will personally review your request and get back to you within 24 hours.</p>
-      <a href="index.html" class="btn-primary">Back to Home</a>
+    </div>
+  </section>
+
+  <!-- WHAT WE DO -->
+  <section class="svc-details">
+    <div class="container">
+      <h2 class="section-title">What We Do</h2>
+      <div class="section-divider center"></div>
+      <div class="about-categories-grid">
+
+        <div class="about-category">
+          <div class="about-category-icon"><i class="fas fa-house-chimney-window"></i></div>
+          <h3>Interior Remodeling</h3>
+          <p>We handle a wide range of interior projects, including:</p>
+          <div class="about-tag-list">
+            <span class="about-tag">Flooring</span>
+            <span class="about-tag">Tile</span>
+            <span class="about-tag">Painting</span>
+            <span class="about-tag">Drywall</span>
+            <span class="about-tag">Kitchen Remodeling</span>
+            <span class="about-tag">Bathroom Remodeling</span>
+            <span class="about-tag">Walls & More</span>
+          </div>
+        </div>
+
+        <div class="about-category">
+          <div class="about-category-icon"><i class="fas fa-tree"></i></div>
+          <h3>Exterior Improvements</h3>
+          <p>We also transform outdoor spaces with:</p>
+          <div class="about-tag-list">
+            <span class="about-tag">Landscaping</span>
+            <span class="about-tag">Landscape Lighting</span>
+            <span class="about-tag">Pavers</span>
+            <span class="about-tag">Concrete</span>
+            <span class="about-tag">Drainage</span>
+            <span class="about-tag">Retaining Walls</span>
+            <span class="about-tag">Concrete Pads</span>
+            <span class="about-tag">Pergolas & More</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="svc-cta-banner" style="background-image: url('PHOTOS/97e4acde-eccc-433a-94bf-74371f9feac8.webp');">
+    <div class="svc-cta-overlay"></div>
+    <div class="svc-cta-content">
+      <h2>One Complete Transformation</h2>
+      <p>Your vision. Our craftsmanship. One complete transformation.</p>
+      <a href="contact.html" class="btn-primary">Get a Free Quote</a>
     </div>
   </section>
 
@@ -119,15 +189,6 @@
   </footer>
 
   <script src="splash.js"></script>
-  <script>
-    const hamburger = document.getElementById('hamburger');
-    const nav = document.querySelector('nav');
-    const navOverlay = document.getElementById('navOverlay');
-    function openNav() { if(nav){nav.classList.add('open');hamburger.classList.add('open');document.body.style.overflow='hidden';} }
-    function closeNav() { if(nav){nav.classList.remove('open');hamburger.classList.remove('open');if(navOverlay)navOverlay.classList.remove('active');document.body.style.overflow='';} }
-    if (hamburger) hamburger.addEventListener('click', () => nav && nav.classList.contains('open') ? closeNav() : openNav());
-    if (navOverlay) navOverlay.addEventListener('click', closeNav);
-    document.querySelectorAll('.dropdown > a').forEach(l => l.addEventListener('click', e => { e.preventDefault(); const p=l.parentElement,o=p.classList.contains('open'); document.querySelectorAll('.dropdown').forEach(d=>d.classList.remove('open')); if(!o)p.classList.add('open'); }));
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>

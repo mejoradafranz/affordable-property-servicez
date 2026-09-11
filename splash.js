@@ -115,8 +115,8 @@
     var navLinksList = document.getElementById('navLinks');
     if (navLinksList) {
       var allLis = Array.prototype.slice.call(navLinksList.children);
-      allLis.slice(0, 2).forEach(function (li) { leftNav.appendChild(li.cloneNode(true)); });
-      allLis.slice(2).forEach(function (li) { rightNav.appendChild(li.cloneNode(true)); });
+      allLis.slice(0, 3).forEach(function (li) { leftNav.appendChild(li.cloneNode(true)); });
+      allLis.slice(3).forEach(function (li) { rightNav.appendChild(li.cloneNode(true)); });
     }
 
     // Center cluster: nav sits right beside the logo; Call/Text and Free Quote

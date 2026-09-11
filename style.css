@@ -186,7 +186,7 @@ ul { list-style: none; }
 }
 
 .logo-img {
-  height: 80px;
+  height: clamp(95px, 9vw, 140px);
   width: auto;
   display: block;
   object-fit: contain;
@@ -1335,7 +1335,7 @@ nav.open {
 }
 
 /* ===== DESKTOP HEADER (nav links live next to Call/Text + Free Quote; hamburger row removed) ===== */
-@media (min-width: 1000px) {
+@media (min-width: 1100px) {
   .nav-container { display: none; }
 
   .header-logo-bar { flex-wrap: nowrap; }
