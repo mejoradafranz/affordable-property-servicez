@@ -690,7 +690,7 @@ nav.open {
 
 .service-card img {
   width: 100%;
-  height: 240px;
+  height: 320px;
   object-fit: cover;
   object-position: center;
   display: block;
@@ -736,7 +736,7 @@ nav.open {
 }
 
 .service-card:hover .service-overlay p {
-  max-height: 80px;
+  max-height: 130px;
   opacity: 1;
 }
 
