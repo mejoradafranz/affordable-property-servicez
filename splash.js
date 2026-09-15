@@ -262,3 +262,106 @@
     setTimeout(() => splash.remove(), 800);
   }, 2000);
 })();
+
+// ===== SITE-WIDE PHOTO LIGHTBOX =====
+// Click any project photo (service page carousels, gallery grids, extra-photo
+// grids, homepage "Our Best Work" marquee) to view it full-size, uncropped,
+// with prev/next through the rest of that same gallery.
+(function () {
+  document.addEventListener('DOMContentLoaded', function () {
+    var ITEM_SELECTORS = [
+      '.svc-gallery-track .svc-gallery-slide',
+      '.gp-grid .gp-item',
+      '.irr-photos-grid .irr-photo-item',
+      '#gallery .marquee-item'
+    ];
+    var CONTAINER_SELECTORS = ['.svc-gallery-track', '.gp-grid', '.irr-photos-grid', '#gallery'];
+
+    var items = Array.prototype.slice.call(document.querySelectorAll(ITEM_SELECTORS.join(',')));
+    if (!items.length) return;
+
+    function getContainer(el) {
+      for (var i = 0; i < CONTAINER_SELECTORS.length; i++) {
+        var c = el.closest(CONTAINER_SELECTORS[i]);
+        if (c) return c;
+      }
+      return document.body;
+    }
+
+    // Build one de-duplicated photo group per gallery container
+    var groups = new Map();
+    items.forEach(function (item) {
+      var img = item.querySelector('img');
+      if (!img) return;
+      item.style.cursor = 'zoom-in';
+      var container = getContainer(item);
+      if (!groups.has(container)) groups.set(container, []);
+      var arr = groups.get(container);
+      if (arr.indexOf(img.src) === -1) arr.push(img.src);
+    });
+
+    // Build lightbox markup once
+    var overlay = document.createElement('div');
+    overlay.className = 'lightbox-overlay';
+    overlay.innerHTML =
+      '<button class="lightbox-close" aria-label="Close">&times;</button>' +
+      '<button class="lightbox-prev" aria-label="Previous photo"><i class="fas fa-chevron-left"></i></button>' +
+      '<img class="lightbox-img" src="" alt="" />' +
+      '<button class="lightbox-next" aria-label="Next photo"><i class="fas fa-chevron-right"></i></button>' +
+      '<div class="lightbox-counter"></div>';
+    document.body.appendChild(overlay);
+
+    var imgEl = overlay.querySelector('.lightbox-img');
+    var counterEl = overlay.querySelector('.lightbox-counter');
+    var closeBtn = overlay.querySelector('.lightbox-close');
+    var prevBtn = overlay.querySelector('.lightbox-prev');
+    var nextBtn = overlay.querySelector('.lightbox-next');
+
+    var currentGroup = [];
+    var currentIndex = 0;
+
+    function show(index) {
+      currentIndex = (index + currentGroup.length) % currentGroup.length;
+      imgEl.src = currentGroup[currentIndex];
+      counterEl.textContent = currentGroup.length > 1 ? (currentIndex + 1) + ' / ' + currentGroup.length : '';
+    }
+
+    function openLightbox(group, startSrc) {
+      currentGroup = group;
+      var idx = group.indexOf(startSrc);
+      show(idx === -1 ? 0 : idx);
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    items.forEach(function (item) {
+      var img = item.querySelector('img');
+      if (!img) return;
+      item.addEventListener('click', function (e) {
+        e.preventDefault();
+        var container = getContainer(item);
+        var group = groups.get(container) || [img.src];
+        openLightbox(group, img.src);
+      });
+    });
+
+    closeBtn.addEventListener('click', closeLightbox);
+    prevBtn.addEventListener('click', function () { show(currentIndex - 1); });
+    nextBtn.addEventListener('click', function () { show(currentIndex + 1); });
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) closeLightbox();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (!overlay.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      else if (e.key === 'ArrowLeft') show(currentIndex - 1);
+      else if (e.key === 'ArrowRight') show(currentIndex + 1);
+    });
+  });
+})();
