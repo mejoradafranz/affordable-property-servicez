@@ -1,11 +1,11 @@
 {
   "redirects": [
     {
-      "source": "/:path*",
+      "source": "/(.*)",
       "has": [
         { "type": "host", "value": "affordable-property-servicez.vercel.app" }
       ],
-      "destination": "https://www.apscfl.com/:path*",
+      "destination": "https://www.apscfl.com/$1",
       "permanent": true
     }
   ],
