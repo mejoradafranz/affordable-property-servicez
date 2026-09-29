@@ -1174,6 +1174,8 @@ nav.open {
   display: flex;
   align-items: center;
   justify-content: center;
+  /* Dark fallback so nothing light ever shows between/behind the photos */
+  background: #0d1f14;
 }
 
 .hero-split-panel {
@@ -1195,6 +1197,7 @@ nav.open {
 .hero-split-indoor {
   background-image: url('PHOTOS/77261ed6-e8c5-4a6a-9ebb-c19177d411d1.webp');
   clip-path: polygon(0 0, 57% 0, 43% 100%, 0 100%);
+  z-index: 2;
 }
 
 .hero-split-indoor::after {
@@ -1203,33 +1206,35 @@ nav.open {
 
 .hero-split-outdoor {
   background-image: url('PHOTOS/0c2ee8bb-f1a9-42b6-8740-f7ec22757643.webp');
-  clip-path: polygon(57% 0, 100% 0, 100% 100%, 43% 100%);
+  /* Unclipped and full-size underneath the indoor panel. Two clipped shapes
+     meeting on a diagonal leave an anti-aliased seam the page shows through
+     (a thin white line, most visible on phones); one shape over a full
+     background has no seam. */
+  z-index: 1;
 }
 
 .hero-split-outdoor::after {
   background: rgba(10, 30, 70, 0.52);
 }
 
-/* When indoor is hovered — indoor expands, outdoor contracts */
-.hero-split:has(.hero-split-indoor:hover) .hero-split-indoor {
-  clip-path: polygon(0 0, 67% 0, 53% 100%, 0 100%);
-}
-.hero-split:has(.hero-split-indoor:hover) .hero-split-outdoor {
-  clip-path: polygon(67% 0, 100% 0, 100% 100%, 53% 100%);
-}
-.hero-split:has(.hero-split-indoor:hover) .hero-split-indoor::after {
-  background: rgba(15, 50, 15, 0.3);
-}
+/* Hover effects only on devices with a real mouse — on phones a tap would
+   otherwise trigger the desktop left/right shapes before the page opens */
+@media (hover: hover) and (pointer: fine) {
+  /* When indoor is hovered — indoor expands, outdoor contracts */
+  .hero-split:has(.hero-split-indoor:hover) .hero-split-indoor {
+    clip-path: polygon(0 0, 67% 0, 53% 100%, 0 100%);
+  }
+  .hero-split:has(.hero-split-indoor:hover) .hero-split-indoor::after {
+    background: rgba(15, 50, 15, 0.3);
+  }
 
-/* When outdoor is hovered — outdoor expands, indoor contracts */
-.hero-split:has(.hero-split-outdoor:hover) .hero-split-outdoor {
-  clip-path: polygon(47% 0, 100% 0, 100% 100%, 33% 100%);
-}
-.hero-split:has(.hero-split-outdoor:hover) .hero-split-indoor {
-  clip-path: polygon(0 0, 47% 0, 33% 100%, 0 100%);
-}
-.hero-split:has(.hero-split-outdoor:hover) .hero-split-outdoor::after {
-  background: rgba(10, 30, 70, 0.3);
+  /* When outdoor is hovered — outdoor expands, indoor contracts */
+  .hero-split:has(.hero-split-outdoor:hover) .hero-split-indoor {
+    clip-path: polygon(0 0, 47% 0, 33% 100%, 0 100%);
+  }
+  .hero-split:has(.hero-split-outdoor:hover) .hero-split-outdoor::after {
+    background: rgba(10, 30, 70, 0.3);
+  }
 }
 
 .hero-split-label {
@@ -1323,9 +1328,6 @@ nav.open {
 @media (max-width: 640px) {
   .hero-split-indoor {
     clip-path: polygon(0 0, 100% 0, 100% 54%, 0 50%);
-  }
-  .hero-split-outdoor {
-    clip-path: polygon(0 54%, 100% 50%, 100% 100%, 0 100%);
   }
   /* Indoor label: pushed down past the fixed header (~156px ≈ top 20% on most phones) */
   .hero-split-label-indoor {
